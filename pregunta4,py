@@ -1,0 +1,22 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import os
+
+
+desktop_path = os.path.expanduser("~/Desktop")
+file_path = os.path.join(desktop_path, "numbers01.txt")
+
+
+if os.path.exists(file_path):
+
+    # Carga los datos desde el archivo
+    data = pd.read_csv(file_path, header=None, names=['Numbers'])
+
+    # Trazo del histograma
+    plt.hist(data['Numbers'], bins=20, edgecolor='k')
+    plt.xlabel('Value')
+    plt.ylabel('Frequency')
+    plt.title('Histogram of the Data')
+    plt.show()
+else:
+    print(f"El archivo {file_path} no se encontró en el escritorio.")
